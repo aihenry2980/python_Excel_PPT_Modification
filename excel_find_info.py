@@ -9,10 +9,10 @@ def findVar(db, nameEmployID):
     for x in db.iloc:
         if str(x[0]) == nameEmployID[1]:
             if x[1].strip() == nameEmployID[0]:
-                if str(x["5th"])=="nan":
-                    return "No Score"
+                if str(x[20])=="nan":
+                    return "No phone"
                 else:
-                    return str(x["5th"])
+                    return str(x[20])
     return "Not Found"
 
 
@@ -20,13 +20,14 @@ def excel_find_score(srcFile, dbFile):
     src = pd.read_excel(srcFile,usecols="A")
     db = pd.read_excel(dbFile)
 
-    df = pd.DataFrame(columns=['Name', 'ID', 'Brand','Score'])
+    df = pd.DataFrame(columns=['Name', 'ID', 'Brand','Phone'])
     for x in src.data:
         x = x.strip()
         nameEmployID = x.split("/")
         if  len(nameEmployID)==3:
             score = findVar(db, nameEmployID)
-            lst = [nameEmployID[0], nameEmployID[1], nameEmployID[2], score]
+            phone = findVar(db, nameEmployID)
+            lst = [nameEmployID[0], nameEmployID[1], nameEmployID[2], phone]
             # df.append(lst)
             df.loc[len(df)] = lst
         else:

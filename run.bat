@@ -1,1 +1,1 @@
-main.py "src.xlsx" "staff list.xlsx"
+excel_find_info.py "src3.xlsx" "staff list.xlsx"
